@@ -43,11 +43,17 @@ class FormDescription
         return $this->form;
     }
 
+    /**
+     * @return \FSC\RestBundle\Form\Model\Collection
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @return string
+     */
     public function getSelfUrl()
     {
         return $this->selfUrl;

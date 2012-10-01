@@ -31,6 +31,12 @@ class AtomLinkFactory
         $this->relPrefix = $relPrefix;
     }
 
+    /**
+     * @param string|integer $rel
+     * @param string         $href
+     *
+     * @return AtomLink
+     */
     public function create($rel, $href, $type = null)
     {
         return AtomLink::create($this->getRel($rel), $href, $type);
@@ -41,6 +47,11 @@ class AtomLinkFactory
         return static::$ianaRelations;
     }
 
+    /**
+     * @param integer|string $rel
+     *
+     * @return string
+     */
     public function getRel($rel)
     {
         if (!in_array($rel, static::$ianaRelations)) {

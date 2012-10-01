@@ -30,6 +30,7 @@ class FormNormalizer
 
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Form\FormInterface $object
      */
     public function normalize($object, $format = null)
     {
@@ -102,6 +103,9 @@ class FormNormalizer
         return $this->mergeFormElementsArrays($formElements);
     }
 
+    /**
+     * @param string|null $blockName
+     */
     protected function renderBlock(FormView $view, $blockName = null, array $variables = array())
     {
         $variables = $view->getVars();
@@ -148,8 +152,7 @@ class FormNormalizer
     /*
         {% if compound %}
             {{ block('form_widget_compound') }}
-        {% else %}
-            {{ block('form_widget_simple') }}
+        {% else { %}{ block('form_widget_simple') }}
         {% endif %}
      */
     protected function renderFormWidget(FormView $view, $blockName, array $variables = array())
@@ -358,8 +361,7 @@ class FormNormalizer
     /*
         {% if expanded %}
             {{ block('choice_widget_expanded') }}
-        {% else %}
-            {{ block('choice_widget_collapsed') }}
+        {% else { %}{ block('choice_widget_collapsed') }}
         {% endif %}
     */
     protected function renderChoiceWidget(FormView $view, $blockName, array $variables = array())
@@ -507,10 +509,12 @@ class FormNormalizer
         {% for attrname, attrvalue in attr %}
             {% if attrname in ['placeholder', 'title'] %}
                 {{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
-            {% else %}
-                {{ attrname }}="{{ attrvalue }}"
+            {% else { %}{ attrname }}="{{ attrvalue }}"
             {% endif %}
         {% endfor %}
+     */
+    /**
+     * @param FormRepresentations\Input|FormRepresentations\Textarea|FormRepresentations\Select $widget
      */
     protected function addWidgetAttributes($widget, FormView $view, $blockName, array $variables = array())
     {

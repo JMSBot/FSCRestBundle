@@ -2,7 +2,6 @@
 
 namespace FSC\RestBundle\Tests\Functional;
 
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 

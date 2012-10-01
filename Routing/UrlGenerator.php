@@ -22,6 +22,7 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param array $parameters
      */
     public function generateCollectionUrl($parameters = array())
     {
@@ -32,6 +33,8 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param string $formRel
+     * @param array  $parameters
      */
     public function generateCollectionFormUrl($formRel, $parameters = array())
     {
@@ -42,6 +45,7 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param array $parameters
      */
     public function generateEntityUrl($entity, $parameters = array())
     {
@@ -53,6 +57,7 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param array $parameters
      */
     public function generateEntityFormUrl($entity, $formRel, $parameters = array())
     {
@@ -64,6 +69,8 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param integer|string $collectionRel
+     * @param array          $parameters
      */
     public function generateEntityCollectionUrl($entity, $collectionRel, $parameters = array())
     {
@@ -75,6 +82,8 @@ class UrlGenerator implements UrlGeneratorInterface
 
     /**
      * {@inheritdoc}
+     * @param string $formRel
+     * @param array  $parameters
      */
     public function generateEntityCollectionFormUrl($entity, $collectionRel, $formRel, $parameters = array())
     {

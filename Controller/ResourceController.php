@@ -103,6 +103,9 @@ class ResourceController
         return $matches[1];
     }
 
+    /**
+     * @return \FSC\RestBundle\REST\Description\FormDescription|\Pagerfanta\Pagerfanta|integer|string|null|Request
+     */
     protected function getRelFromEntityCollectionRoute(Request $request)
     {
         $route = $request->attributes->get('_route');

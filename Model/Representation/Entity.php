@@ -51,11 +51,19 @@ class Entity extends Resource
         $this->relations[$entity->rel] = $entity;
     }
 
+    /**
+     * @param string $key
+     * @param string $value
+     */
     public function setElement($key, $value)
     {
         $this->elements[$key] = $value;
     }
 
+    /**
+     * @param string $key
+     * @param string $value
+     */
     public function setAttribute($key, $value)
     {
         $this->attributes[$key] = $value;

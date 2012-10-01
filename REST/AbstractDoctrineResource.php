@@ -75,7 +75,8 @@ abstract class AbstractDoctrineResource extends AbstractResource
 
     /**
      * @param QueryBuilder|Query $query
-     * @param Collection         $collection
+     * @param null|Collection    $collection
+     * @param boolean            $fetchJoinCollection
      *
      * @return Pagerfanta
      */

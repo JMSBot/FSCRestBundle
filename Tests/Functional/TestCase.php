@@ -17,6 +17,9 @@ class TestCase extends WebTestCase
         static::$kernel->boot();
     }
 
+    /**
+     * @param string $name
+     */
     public function get($name)
     {
         return static::$kernel->getContainer()->get($name);

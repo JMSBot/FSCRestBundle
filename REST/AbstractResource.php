@@ -305,6 +305,9 @@ abstract class AbstractResource
         return sprintf('%s_rest_%s', $routeName, $this->guessResourceName());
     }
 
+    /**
+     * @param boolean $doNotExpandRelationsAndCollections
+     */
     public function normalizeEntity($entity, $doNotExpandRelationsAndCollections = false)
     {
         // Make sure that the used is authorized to see this resource
@@ -410,6 +413,9 @@ abstract class AbstractResource
         return $collectionRepresentation;
     }
 
+    /**
+     * @param integer|string $rel
+     */
     public function normalizeEntityCollection($entity, $rel, Pagerfanta $pager, FormDescription $formDescription)
     {
         $configurationEntityCollection = $this->getConfigurationEntityCollections()[$rel];
@@ -503,6 +509,9 @@ abstract class AbstractResource
         return new FormDescription($rel, $method, $actionUrl, $form, $formData, $selfUrl);
     }
 
+    /**
+     * @return FormDescription
+     */
     public function createEntityCollectionFormDescription($rel, $entity, $collectionRel, Request $request = null)
     {
         if ('search' == $rel) {
@@ -512,6 +521,9 @@ abstract class AbstractResource
         throw new \Exception('Not implemented, sorry!');
     }
 
+    /**
+     * @param integer|string $collectionRel
+     */
     public function createEntityCollectionSearchFormDescription($entity, $collectionRel, Request $request = null)
     {
         $createForm = $this->getConfigurationCollectionSearch()['create_form'];
@@ -542,10 +554,26 @@ abstract class AbstractResource
         }
     }
 
+    /**
+     * @return FormDescription|Pagerfanta|integer|string|null|Request
+     */
     abstract public function getEntity(Request $request);
+    /**
+     * @return FormDescription|Pagerfanta
+     */
     abstract public function getCollectionPager(Collection $search);
+    /**
+     * @param integer|string $rel
+     *
+     * @return FormDescription|Pagerfanta|integer|string
+     */
     abstract public function getEntityCollectionPager($entity, Collection $search, $rel);
 
+    /**
+     * @param integer|string $entityRelationRel
+     *
+     * @return object|null
+     */
     public function getEntityRelation($entity, $entityRelationRel)
     {
         $getRelation = $this->getConfigurationEntityRelations()[$entityRelationRel]['get_relation'];
